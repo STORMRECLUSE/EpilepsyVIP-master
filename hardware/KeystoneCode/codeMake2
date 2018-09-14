@@ -1,0 +1,105 @@
+#Compiler and Linker
+CC          := g++
+
+#The Target Binary Program
+TARGET      := makeallfiles
+
+#The Directories, Source, Includes, Objects, Binary and Resources
+SRCDIRS     := Preprocess ML Features DataHandling PostProcess libSVM/libsvm-3.21/svm.cpp
+INCDIRSRC   := Preprocess ML Features DataHandling PostProcess libSVM/libsvm-3.21
+
+SRCOUT      := $(CLION_EXE_DIR)/sources
+BUILDDIR    := $(CLION_EXE_DIR)/objects
+TARGETDIR   := $(CLION_EXE_DIR)
+RESDIR      := res
+SRCEXT      := cpp
+DEPEXT      := d
+OBJEXT      := o
+
+#Flags, Libraries and Includes
+CFLAGS      :=  -g -Wl,-rpath,/usr/local/MATLAB/R2013a_Student/bin/glnxa64/ -fopenmp
+#Wall -O3 -fopenmp
+LIB         := -lm -lmat -lmx -L/usr/local/MATLAB/R2013a_Student/bin/glnxa64 -fopenmp
+#-larmadillo -fopenmp
+
+INC         := $(addprefix -I ,$(INCDIRSRC))
+INC         += -I/usr/local/include -I/usr/local/MATLAB/R2013a_Student/extern/include/
+INCOBJ 	    := -I $(SRCOUT) -I/usr/local/include -I/usr/local/MATLAB/R2013a_Student/extern/include/
+INCDEP      := $(INCOBJ)
+
+
+#---------------------------------------------------------------------------------
+#DO NOT EDIT BELOW THIS LINE
+#---------------------------------------------------------------------------------
+SOURCES_UNC := $(shell find $(SRCDIRS) -type f -name *.$(SRCEXT))
+
+
+SOURCES_CP := $(addprefix $(SRCOUT)/,$(notdir $(SOURCES_UNC)))
+OBJECTS := $(patsubst $(SRCOUT)/%,$(BUILDDIR)/%,$(SOURCES_CP:.$(SRCEXT)=.$(OBJEXT)))
+
+
+#Defauilt Make
+all: single_source $(TARGET)
+
+#Remake
+remake: cleaner all
+
+#Copy Resources from Resources Directory to Target Directory
+#resources: directories
+#	@cp $(RESDIR)/* $(TARGETDIR)/
+
+single_source: directories
+	echo 'Copying files'
+	@rm -f $(SRCOUT)/*
+	@$(foreach FILE, $(SOURCES_UNC), cp -f $(FILE) $(SRCOUT); cp -f $(FILE:.$(SRCEXT)=.h) $(SRCOUT);)
+
+
+#Make the Directories
+directories:
+	@mkdir -p $(TARGETDIR)
+	@mkdir -p $(BUILDDIR)
+	@mkdir -p $(SRCOUT)
+
+#Clean only Objects
+clean:
+	@$(RM) -rf $(BUILDDIR)
+
+#Full Clean, Objects and Binaries
+cleaner: clean
+	@$(RM) -rf $(TARGETDIR)
+#   @$(RM) -rf $(SRCOUT)
+
+#Pull in dependency info for *existing* .o files
+-include $(OBJECTS:.$(OBJEXT)=.$(DEPEXT))
+
+#Link
+$(TARGET): $(OBJECTS)
+	echo $(OBJECTS)
+	$(CC) $(CFLAGS) -o $(TARGETDIR)/$(TARGET) $^ $(LIB)
+
+#Compile
+$(BUILDDIR)/%.$(OBJEXT): $(SRCOUT)/%.$(SRCEXT) single_source
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) $(INC) -o $@ -c $<
+	$(CC) $(CFLAGS) $(INCDEP) -MM $< > $(BUILDDIR)/$*.$(DEPEXT)
+	@mv -f $(BUILDDIR)/$*.$(DEPEXT) $(BUILDDIR)/$*.$(DEPEXT).tmp
+	@sed -e 's|.*:|$(BUILDDIR)/$*.$(OBJEXT):|' < $(BUILDDIR)/$*.$(DEPEXT).tmp > $(BUILDDIR)/$*.$(DEPEXT)
+	@sed -e 's/.*://' -e 's/\\$$//' < $(BUILDDIR)/$*.$(DEPEXT).tmp | fmt -1 | sed -e 's/^ *//' -e 's/$$/:/' >> $(BUILDDIR)/$*.$(DEPEXT)
+	@rm -f $(BUILDDIR)/$*.$(DEPEXT).tmp
+
+#$(SRCOUT)/%.$(SRCEXT): single_source
+#	:
+
+#$(BUILDDIR)/svm.o: $(SRCOUT)/svm.cpp libSVM/libsvm-3.21/svm.h
+#	@echo $(OBJECTS)
+#	@mkdir -p $(dir $@)
+#	$(CC) $(CFLAGS) $(INC) -o $@ -c $<
+
+#$(BUILDDIR)/get_alarm_rate.o: libSVM/libsvm-3.21/svm.cpp libSVM/libsvm-3.21/svm.h
+#	@echo $(OBJECTS)
+#	@mkdir -p $(dir $@)
+#	$(CC) $(CFLAGS) $(INC) -o $@ -c $<
+
+
+#Non-File Targets
+.PHONY: all remake clean cleaner resources single_source

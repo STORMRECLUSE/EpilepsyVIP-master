@@ -1,0 +1,84 @@
+Results file for Burns Pipeline
+Parameters used for this test
+================================
+Feature used is Burns Features
+Window Length 	16384.000
+Window Overlap 	8192.000
+Sampling Frequency 	1000.000
+Awake Times are  included in training
+Asleep Times are  included in training
+
+Patients are TA023 TS057
+
+Results file for Burns Pipeline
+Parameters used for this test
+================================
+Feature used is Burns Features
+Window Length 	16384.000
+Window Overlap 	8192.000
+Sampling Frequency 	1000.000
+Awake Times are  included in training
+Asleep Times are  included in training
+
+Patients are TA023 TS057
+
+Results file for Burns Pipeline
+Parameters used for this test
+================================
+Feature used is Burns Features
+Window Length 	16384.000
+Window Overlap 	8192.000
+Sampling Frequency 	1000.000
+Awake Times are  included in training
+Asleep Times are  included in training
+
+Patients are TA023 TS057
+
+Results file for Burns Pipeline
+Parameters used for this test
+================================
+Feature used is Burns Features
+Window Length 	16384.000
+Window Overlap 	8192.000
+Sampling Frequency 	1000.000
+Awake Times are  included in training
+Asleep Times are  included in training
+
+Patients are TA023 TS057
+
+Results file for Burns Pipeline
+Parameters used for this test
+================================
+Feature used is Burns Features
+Window Length 	16384.000
+Window Overlap 	8192.000
+Sampling Frequency 	1000.000
+Awake Times are  included in training
+Asleep Times are  included in training
+
+Patients are TA023 TS057
+
+Results file for Burns Pipeline
+Parameters used for this test
+================================
+Feature used is Burns Features
+Window Length 	16384.000
+Window Overlap 	8192.000
+Sampling Frequency 	1000.000
+Awake Times are  included in training
+Asleep Times are  included in training
+
+Patients are TA023 TS057
+
+Results file for Burns Pipeline
+Parameters used for this test
+================================
+Feature used is Burns Features
+Window Length 	16384.000
+Window Overlap 	8192.000
+Sampling Frequency 	1000.000
+Awake Times are  included in training
+Asleep Times are  included in training
+
+Patients are TA023 TS057
+

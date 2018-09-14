@@ -1,0 +1,87 @@
+<!doctype>
+<head>
+	<link type="text/css" rel="stylesheet" href="../src/css/graph.css">
+	<link type="text/css" rel="stylesheet" href="../src/css/detail.css">
+	<link type="text/css" rel="stylesheet" href="../src/css/legend.css">
+	<link type="text/css" rel="stylesheet" href="css/extensions.css">
+
+	<script src="../vendor/d3.v3.js"></script>
+	<script src="../rickshaw.js"></script>
+</head>
+<body>
+
+<style>
+#chart {
+        display: inline-block;
+        margin-left: 40px;
+}
+#y_axis {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 40px;
+}
+</style>
+
+<div id="content">
+	<div id="chart"></div>
+</div>
+
+<script>
+
+var tv = 250;
+
+// instantiate our graph!
+var graph = new Rickshaw.Graph( {
+	element: document.getElementById("chart"),
+	width: 900,
+	height: 500,
+	renderer: 'line',
+	series: new Rickshaw.Series.FixedDuration([{ name: 'one' }], undefined, {
+		timeInterval: tv,
+		maxDataPoints: 100,
+		timeBase: new Date().getTime() / 1000
+	}) 
+} );
+
+var x_axis = new Rickshaw.Graph.Axis.Time( { graph: graph } );
+
+	/*var y_axis = new Rickshaw.Graph.Axis.Y( {
+        graph: graph,
+        orientation: 'left',
+        tickFormat: Rickshaw.Fixtures.Number.formatKMBT,
+        element: document.getElementById('y_axis'),
+	} ); */
+
+graph.render();
+
+d3.csv("examples/data/test_eeg_data.csv", function(data) {
+  data.forEach(function(d) {
+     d[" AF3"] = +d[" AF3"];
+     d[" AF4"] = +d[" AF4"];
+     d[" T8"] = +d[" T8"];
+  });
+  console.log(data[0]);
+});
+
+// add some data every so often
+
+var i = 0;
+var iv = setInterval( function() {
+
+
+	var new_point[" AF3"] = data[i][" AF3"];
+	new_point[" AF4"] = data[i][" AF4"];
+	new_point[" T8"] = data[i][" T8"];
+	console.log(new_point);
+
+	graph.series.addData(new_point);
+
+
+	graph.render(); 
+
+}, tv );
+
+</script>
+
+</body>

@@ -1,0 +1,60 @@
+
+Patient TA023
+=========================
+Mean Prediction Sensitivity: 	1.00
+Mean Detection Sensitivity: 	1.00
+Mean Latency: 	-68.6667
+False Positive Rate: 	1.80464 (fp/Hr) 
+
+All files prediction Sensitivity: [ 1.  1.  1. nan nan nan nan nan nan]
+All files detection Sensitivity: [ 1.  1.  1. nan nan nan nan nan nan]
+All files latency: [ -34.  -25. -147.   nan   nan   nan   nan   nan   nan]
+All files false ositives: [ 0. nan  1.  4.  0.  0.  0.  1.  1.]
+All files FP Time: [0.85611111        nan 0.01944444 0.50055556 0.50055556 0.50055556
+ 0.50055556 0.50055556 0.50055556]
+
+
+Patient TA023
+=========================
+Mean Prediction Sensitivity: 	1.00
+Mean Detection Sensitivity: 	1.00
+Mean Latency: 	-201.6667
+False Positive Rate: 	4.38270 (fp/Hr) 
+
+All files prediction Sensitivity: [ 1.  1.  1. nan nan nan nan nan nan]
+All files detection Sensitivity: [ 1.  1.  1. nan nan nan nan nan nan]
+All files latency: [-275. -144. -186.   nan   nan   nan   nan   nan   nan]
+All files false ositives: [ 4. nan  1. 10.  0.  0.  0.  2.  0.]
+All files FP Time: [0.85611111        nan 0.01944444 0.50055556 0.50055556 0.50055556
+ 0.50055556 0.50055556 0.50055556]
+
+
+Patient TA023
+=========================
+Mean Prediction Sensitivity: 	1.00
+Mean Detection Sensitivity: 	1.00
+Mean Latency: 	-232.6667
+False Positive Rate: 	19.85105 (fp/Hr) 
+
+All files prediction Sensitivity: [ 1.  1.  1. nan nan nan nan nan nan]
+All files detection Sensitivity: [ 1.  1.  1. nan nan nan nan nan nan]
+All files latency: [-299. -217. -182.   nan   nan   nan   nan   nan   nan]
+All files false ositives: [16. nan  1. 10. 10. 10. 10. 10. 10.]
+All files FP Time: [0.85611111        nan 0.01944444 0.50055556 0.50055556 0.50055556
+ 0.50055556 0.50055556 0.50055556]
+
+
+Patient TA023
+=========================
+Mean Prediction Sensitivity: 	1.00
+Mean Detection Sensitivity: 	1.00
+Mean Latency: 	-232.6667
+False Positive Rate: 	19.85105 (fp/Hr) 
+
+All files prediction Sensitivity: [ 1.  1.  1. nan nan nan nan nan nan]
+All files detection Sensitivity: [ 1.  1.  1. nan nan nan nan nan nan]
+All files latency: [-299. -217. -182.   nan   nan   nan   nan   nan   nan]
+All files false ositives: [16. nan  1. 10. 10. 10. 10. 10. 10.]
+All files FP Time: [0.85611111        nan 0.01944444 0.50055556 0.50055556 0.50055556
+ 0.50055556 0.50055556 0.50055556]
+

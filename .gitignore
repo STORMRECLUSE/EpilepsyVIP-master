@@ -1,0 +1,15 @@
+prediction/test_statmodels.py
+*.pyc
+*.pyc
+
+# don't add the data folder
+data/
+
+# Don't add compiled C stuff
+*.o
+
+# Don't add Pychar
+.idea
+
+# Mac directory junk
+.DS_Store
